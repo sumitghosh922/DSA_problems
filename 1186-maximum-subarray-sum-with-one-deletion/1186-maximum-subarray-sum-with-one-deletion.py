@@ -2,17 +2,11 @@ class Solution(object):
     def maximumSum(self, arr):
         noDel = arr[0]
         oneDel = float('-inf')
-        res = arr[0]
+        result = arr[0]
+        for i in range(1,len(arr)):
+            previousNoDel = noDel
+            noDel = max(noDel+arr[i],arr[i])
+            oneDel = max(oneDel+arr[i],previousNoDel)
+            result = max(result,noDel,oneDel) 
+        return result
 
-        for i in range(1, len(arr)):
-            prevNoDel = noDel
-
-            noDel = max(arr[i], noDel + arr[i])
-
-            oneDel = max(prevNoDel, oneDel + arr[i])
-
-            res = max(res, noDel, oneDel)
-
-        return res
-
-        
