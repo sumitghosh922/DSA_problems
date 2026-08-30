@@ -1,16 +1,17 @@
 class Solution(object):
     def removeDuplicates(self, nums):
-        start = 0 
-        cm = 1
         unique = 1
-        while(cm < len(nums)):
-            if nums[cm] == nums[cm-1]:
-                cm+=1
+        n=len(nums)
+        i = 0
+        j = 1
+        while(j<n):
+            if nums[j] == nums[j-1]:
+                j+=1
                 continue
             else:
+                i+=1
+                nums[i] = nums[j]
+                j+=1
                 unique+=1
-                start+=1
-                nums[start] = nums[cm]
-                cm+=1
         return unique
         
